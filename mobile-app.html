@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Chaptrek NCERT</title>
+  <style>
+    :root {
+      --bg: #f5f7fa;
+      --card: #ffffff;
+      --primary: #2c6df2;
+      --primary-dark: #1d4fd8;
+      --secondary: #6cc7b8;
+      --accent: #f7b267;
+      --danger: #e74c3c;
+      --success: #27ae60;
+      --text: #18202d;
+      --muted: #5d6b82;
+      --line: #e8edf7;
+      --shadow: 0 8px 24px rgba(38, 72, 148, 0.12);
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      height: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      transition: 0.2s ease;
+    }
+
+    .app-container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      max-width: 600px;
+      margin: 0 auto;
+      background: var(--card);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ==================== HEADER ==================== */
+
+    .header {
+      background: linear-gradient(135deg, var(--primary) 0%, #1a5dbb 100%);
+      color: white;
+      padding: 12px 16px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: var(--shadow-sm);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .brand-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.2);
+      display: grid;
+      place-items: center;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .header-icons {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .icon-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+    }
+
+    .icon-btn:active {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    /* ==================== MAIN CONTENT ==================== */
+
+    .main {
+      flex: 1;
+      overflow-y: auto;
+      padding-bottom: 70px;
+      scroll-behavior: smooth;
+    }
+
+    .main::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .main::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .main::-webkit-scrollbar-thumb {
+      background: #d0d7e4;
+      border-radius: 2px;
+    }
+
+    .section {
+      padding: 16px;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0 0 12px 0;
+      color: var(--text);
+    }
+
+    /* ==================== HERO / ONBOARDING ==================== */
+
+    .hero-banner {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      border-radius: 18px;
+      padding: 20px;
+      color: white;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.25);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+
+    .hero-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin: 0 0 8px 0;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-subtitle {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin: 0;
+      opacity: 0.95;
+    }
+
+    .hero-cta {
+      margin-top: 12px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn {
+      border-radius: 12px;
+      padding: 10px 16px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      transition: 0.2s ease;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      box-shadow: 0 6px 16px rgba(44, 109, 242, 0.3);
+    }
+
+    .btn-primary:active {
+      transform: scale(0.98);
+    }
+
+    .btn-light {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-light:active {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-secondary {
+      background: var(--card);
+      color: var(--primary);
+      border: 1.5px solid var(--primary);
+    }
+
+    .btn-secondary:active {
+      background: #f0f5ff;
+    }
+
+    /* ==================== CARDS ==================== */
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .badge {
+      background: #ebf9f3;
+      color: var(--success);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    .badge.live {
+      background: #ffe8e8;
+      color: var(--danger);
+    }
+
+    .badge.upcoming {
+      background: #fff8e8;
+      color: #f39c12;
+    }
+
+    .badge.completed {
+      background: #ebf9f3;
+      color: var(--success);
+    }
+
+    /* ==================== SESSION / CLASS CARD ==================== */
+
+    .session-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .session-header {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .session-info {
+      flex: 1;
+    }
+
+    .session-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin: 0 0 4px 0;
+      color: var(--text);
+    }
+
+    .session-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .session-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--secondary), #8cd8c4);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-left: 10px;
+    }
+
+    .session-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 10px;
+      border-top: 1px solid var(--line);
+    }
+
+    .session-stats {
+      display: flex;
+      gap: 14px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .session-action {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      border-radius: 10px;
+      padding: 8px 14px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    /* ==================== GRID CARDS ==================== */
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .grid-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .grid-icon {
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    .grid-value {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin: 0;
+      color: var(--text);
+    }
+
+    .grid-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin: 4px 0 0;
+    }
+
+    /* ==================== QUICK ACTION BUTTONS ==================== */
+
+    .quick-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .quick-action {
+      background: var(--card);
+      border: 1.5px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .quick-action:active {
+      background: #f0f5ff;
+    }
+
+    .quick-action-icon {
+      font-size: 1.8rem;
+    }
+
+    .quick-action-text {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    /* ==================== LIST ITEMS ==================== */
+
+    .list-item {
+      display: flex;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .list-item:last-child {
+      border-bottom: none;
+    }
+
+    .list-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: #eef4ff;
+      color: var(--primary);
+      display: grid;
+      place-items: center;
+      font-size: 1.2rem;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+
+    .list-content {
+      flex: 1;
+    }
+
+    .list-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin: 0 0 3px;
+      color: var(--text);
+    }
+
+    .list-subtitle {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .list-arrow {
+      color: var(--muted);
+      font-size: 1.2rem;
+    }
+
+    /* ==================== TABS / NAVIGATION ==================== */
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 0 0 8px;
+      margin-bottom: 12px;
+      scroll-behavior: smooth;
+    }
+
+    .tabs::-webkit-scrollbar {
+      height: 3px;
+    }
+
+    .tabs::-webkit-scrollbar-thumb {
+      background: #d0d7e4;
+      border-radius: 2px;
+    }
+
+    .tab {
+      background: var(--card);
+      border: 1.5px solid var(--line);
+      color: var(--muted);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .tab.active {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      border-color: transparent;
+    }
+
+    /* ==================== BOTTOM NAVIGATION ==================== */
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--card);
+      border-top: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      max-width: 600px;
+      margin: 0 auto;
+      width: 100%;
+      z-index: 50;
+      box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 0;
+      color: var(--muted);
+      font-size: 0.75rem;
+      font-weight: 700;
+      gap: 4px;
+    }
+
+    .nav-item.active {
+      color: var(--primary);
+    }
+
+    .nav-icon {
+      font-size: 1.4rem;
+    }
+
+    .nav-label {
+      font-size: 0.7rem;
+    }
+
+    /* ==================== MODALS / OVERLAYS ==================== */
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 200;
+      max-width: 600px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .overlay.active {
+      display: block;
+    }
+
+    .modal {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--card);
+      border-radius: 24px 24px 0 0;
+      padding: 20px 16px 40px;
+      z-index: 250;
+      animation: slideUp 0.3s ease;
+      max-width: 600px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(100%);
+      }
+      to {
+        transform: translateY(0);
+      }
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .modal-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin: 0;
+    }
+
+    .close-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--bg);
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      font-size: 1.2rem;
+    }
+
+    /* ==================== STATES ==================== */
+
+    .empty-state {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--muted);
+    }
+
+    .empty-icon {
+      font-size: 3rem;
+      margin-bottom: 12px;
+    }
+
+    .empty-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0 0 8px;
+      color: var(--text);
+    }
+
+    .empty-text {
+      font-size: 0.9rem;
+      margin: 0 0 16px;
+      line-height: 1.5;
+    }
+
+    /* ==================== FORM ELEMENTS ==================== */
+
+    .input-group {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .input {
+      flex: 1;
+      padding: 12px 14px;
+      border: 1.5px solid var(--line);
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      background: var(--card);
+      color: var(--text);
+    }
+
+    .input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(44, 109, 242, 0.1);
+    }
+
+    .input::placeholder {
+      color: var(--muted);
+    }
+
+    .search-bar {
+      position: relative;
+      margin-bottom: 16px;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 10px 14px 10px 36px;
+      border: 1.5px solid var(--line);
+      border-radius: 12px;
+      font-size: 0.95rem;
+      background: var(--card);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    /* ==================== UTILITY CLASSES ==================== */
+
+    .flex {
+      display: flex;
+      align-items: center;
+    }
+
+    .flex-between {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .mt-0 {
+      margin-top: 0;
+    }
+    .mt-8 {
+      margin-top: 8px;
+    }
+    .mt-12 {
+      margin-top: 12px;
+    }
+    .mt-16 {
+      margin-top: 16px;
+    }
+
+    .mb-0 {
+      margin-bottom: 0;
+    }
+    .mb-8 {
+      margin-bottom: 8px;
+    }
+    .mb-12 {
+      margin-bottom: 12px;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .text-muted {
+      color: var(--muted);
+    }
+
+    .font-bold {
+      font-weight: 700;
+    }
+
+    .opacity-60 {
+      opacity: 0.6;
+    }
+
+    /* ==================== PAGE SECTIONS ==================== */
+
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    /* ==================== RESPONSIVE ==================== */
+
+    @media (max-width: 480px) {
+      .app-container {
+        max-width: 100%;
+        height: 100vh;
+      }
+
+      .grid-2 {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <!-- HEADER -->
+    <header class="header">
+      <div class="brand">
+        <div class="brand-icon">C</div>
+        <span>Chaptrek</span>
+      </div>
+      <div class="header-icons">
+        <button class="icon-btn" onclick="toggleNotifications()">🔔</button>
+        <button class="icon-btn" onclick="toggleProfile()">👤</button>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+      <!-- HOME PAGE -->
+      <div id="home-page" class="page active">
+        <!-- HERO BANNER -->
+        <section class="section">
+          <div class="hero-banner">
+            <span class="hero-badge">Welcome Back!</span>
+            <h1 class="hero-title">Ready to learn?</h1>
+            <p class="hero-subtitle">Join live sessions, access notes, and grow with Chaptrek</p>
+            <div class="hero-cta">
+              <button class="btn btn-light" onclick="goToPage('sessions')">
+                Find Sessions
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- QUICK STATS -->
+        <section class="section">
+          <div class="grid-2">
+            <div class="grid-card">
+              <div class="grid-icon">📚</div>
+              <p class="grid-value">24</p>
+              <p class="grid-label">Study Materials</p>
+            </div>
+            <div class="grid-card">
+              <div class="grid-icon">✅</div>
+              <p class="grid-value">18</p>
+              <p class="grid-label">Completed</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- UPCOMING SESSIONS -->
+        <section class="section">
+          <h2 class="section-title">Upcoming Sessions</h2>
+
+          <div class="session-card">
+            <div class="session-header">
+              <div class="session-info">
+                <p class="session-name">Biology Revision Class</p>
+                <p class="session-meta">📅 Today • 4:00 PM</p>
+              </div>
+              <div class="session-avatar">A</div>
+            </div>
+            <div class="session-footer">
+              <div class="session-stats">
+                <div class="stat-item">👥 12 Students</div>
+                <div class="stat-item">🎥 Video Call</div>
+              </div>
+              <button class="session-action" onclick="joinSession('biology')">
+                Join
+              </button>
+            </div>
+          </div>
+
+          <div class="session-card">
+            <div class="session-header">
+              <div class="session-info">
+                <p class="session-name">Math Problem Solving</p>
+                <p class="session-meta">📅 Tomorrow • 11:00 AM</p>
+              </div>
+              <div class="session-avatar">M</div>
+            </div>
+            <div class="session-footer">
+              <div class="session-stats">
+                <div class="stat-item">👥 8 Students</div>
+                <div class="stat-item">💬 Chat</div>
+              </div>
+              <button class="session-action" onclick="joinSession('math')">
+                Join
+              </button>
+            </div>
+          </div>
+
+          <div class="session-card">
+            <div class="session-header">
+              <div class="session-info">
+                <p class="session-name">Chemistry Lab Notes</p>
+                <p class="session-meta">📅 Next Week • 3:30 PM</p>
+              </div>
+              <div class="session-avatar">C</div>
+            </div>
+            <div class="session-footer">
+              <div class="session-stats">
+                <div class="stat-item">👥 15 Students</div>
+                <div class="stat-item">📄 Notes</div>
+              </div>
+              <button class="session-action" onclick="joinSession('chemistry')">
+                Join
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- QUICK ACCESS -->
+        <section class="section">
+          <h2 class="section-title">Quick Access</h2>
+          <div class="quick-actions">
+            <button class="quick-action" onclick="goToPage('notes')">
+              <div class="quick-action-icon">📝</div>
+              <div class="quick-action-text">My Notes</div>
+            </button>
+            <button class="quick-action" onclick="goToPage('resources')">
+              <div class="quick-action-icon">📚</div>
+              <div class="quick-action-text">Resources</div>
+            </button>
+            <button class="quick-action" onclick="startChat()">
+              <div class="quick-action-icon">💬</div>
+              <div class="quick-action-text">Messages</div>
+            </button>
+            <button class="quick-action" onclick="goToPage('youtube')">
+              <div class="quick-action-icon">🎥</div>
+              <div class="quick-action-text">YouTube</div>
+            </button>
+          </div>
+        </section>
+
+        <!-- RECENT ACTIVITY -->
+        <section class="section">
+          <h2 class="section-title">Recent Activity</h2>
+          <div class="card">
+            <div class="list-item">
+              <div class="list-icon">📖</div>
+              <div class="list-content">
+                <p class="list-title">Chapter 5 Notes Shared</p>
+                <p class="list-subtitle">Biology • 2 hours ago</p>
+              </div>
+              <span class="list-arrow">→</span>
+            </div>
+            <div class="list-item">
+              <div class="list-icon">✍️</div>
+              <div class="list-content">
+                <p class="list-title">Quiz Submitted</p>
+                <p class="list-subtitle">Math • Scored 85%</p>
+              </div>
+              <span class="list-arrow">→</span>
+            </div>
+            <div class="list-item">
+              <div class="list-icon">💡</div>
+              <div class="list-content">
+                <p class="list-title">Doubt Resolved</p>
+                <p class="list-subtitle">Chemistry • 5 hours ago</p>
+              </div>
+              <span class="list-arrow">→</span>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- SESSIONS PAGE -->
+      <div id="sessions-page" class="page">
+        <section class="section">
+          <div class="search-bar">
+            <span class="search-icon">🔍</span>
+            <input
+              type="text"
+              placeholder="Search sessions..."
+              onkeyup="filterSessions(this.value)"
+            />
+          </div>
+
+          <div class="tabs">
+            <button class="tab active" onclick="filterByStatus('all')">All</button>
+            <button class="tab" onclick="filterByStatus('live')">Live</button>
+            <button class="tab" onclick="filterByStatus('upcoming')">Upcoming</button>
+            <button class="tab" onclick="filterByStatus('past')">Past</button>
+          </div>
+
+          <h2 class="section-title">Trending Sessions</h2>
+
+          <div class="session-card">
+            <div class="session-header">
+              <div class="session-info">
+                <p class="session-name">NCERT Class 10 Physics</p>
+                <p class="session-meta">📅 Today • 6:00 PM</p>
+              </div>
+              <div class="session-avatar" style="background: linear-gradient(135deg, #f7b267, #f39c12);">
+                P
+              </div>
+            </div>
+            <div class="session-footer">
+              <div class="session-stats">
+                <div class="stat-item">👥 32 Students</div>
+                <div class="stat-item">🎥 Video</div>
+              </div>
+              <button class="session-action">Join</button>
+            </div>
+          </div>
+
+          <div class="session-card">
+            <div class="session-header">
+              <div class="session-info">
+                <p class="session-name">English Literature Debate</p>
+                <p class="session-meta">📅 Tomorrow • 2:00 PM</p>
+              </div>
+              <div class="session-avatar" style="background: linear-gradient(135deg, #9b59b6, #8e44ad);">
+                E
+              </div>
+            </div>
+            <div class="session-footer">
+              <div class="session-stats">
+                <div class="stat-item">👥 18 Students</div>
+                <div class="stat-item">💬 Chat</div>
+              </div>
+              <button class="session-action">Join</button>
+            </div>
+          </div>
+
+          <div class="session-card">
+            <div class="session-header">
+              <div class="session-info">
+                <p class="session-name">Economics Module Completion</p>
+                <p class="session-meta">📅 Next Week • 5:00 PM</p>
+              </div>
+              <div class="session-avatar" style="background: linear-gradient(135deg, #e74c3c, #c0392b);">
+                Ec
+              </div>
+            </div>
+            <div class="session-footer">
+              <div class="session-stats">
+                <div class="stat-item">👥 24 Students</div>
+                <div class="stat-item">📄 Notes</div>
+              </div>
+              <button class="session-action">Join</button>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- NOTES PAGE -->
+      <div id="notes-page" class="page">
+        <section class="section">
+          <div class="search-bar">
+            <span class="search-icon">🔍</span>
+            <input type="text" placeholder="Search notes..." />
+          </div>
+
+          <h2 class="section-title">Your Study Notes</h2>
+
+          <div class="card">
+            <div class="list-item">
+              <div class="list-icon">📋</div>
+              <div class="list-content">
+                <p class="list-title">Biology Chapter 5</p>
+                <p class="list-subtitle">Human Anatomy • 8 pages</p>
+              </div>
+              <span class="list-arrow">→</span>
+            </div>
+            <div class="list-item">
+              <div class="list-icon">📋</div>
+              <div class="list-content">
+                <p class="list-title">Math Formulas</p>
+                <p class="list-subtitle">Algebra & Geometry • 12 pages</p>
+              </div>
+              <span class="list-arrow">→</span>
+            </div>
+            <div class="list-item">
+              <div class="list-icon">📋</div>
+              <div class="list-content">
+                <p class="list-title">Chemistry Reactions</p>
+                <p class="list-subtitle">Organic Chemistry • 6 pages</p>
+              </div>
+              <span class="list-arrow">→</span>
+            </div>
+          </div>
+
+          <h2 class="section-title" style="margin-top: 24px;">Shared by Teachers</h2>
+
+          <div class="card">
+            <div class="list-item">
+              <div class="list-icon" style="background: #ffe8e8; color: var(--danger);">📄</div>
+              <div class="list-content">
+                <p class="list-title">NCERT Chapter Summary</p>
+                <p class="list-subtitle">Science • Shared 2 days ago</p>
+              </div>
+              <span class="list-arrow">→</span>
+            </div>
+            <div class="list-item">
+              <div class="list-icon" style="background: #ffe8e8; color: var(--danger);">📄</div>
+              <div class="list-content">
+                <p class="list-title">Previous Year Papers</p>
+                <p class="list-subtitle">Math • Shared 5 days ago</p>
+              </div>
+              <span class="list-arrow">→</span>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- RESOURCES PAGE -->
+      <div id="resources-page" class="page">
+        <section class="section">
+          <h2 class="section-title">Study Resources</h2>
+
+          <div class="card">
+            <div class="list-item">
+              <div class="list-icon">📚</div>
+              <div class="list-content">
+                <p class="list-title">NCERT Textbooks</p>
+                <p class="list-subtitle">Full chapters for all subjects</p>
+              </div>
+              <span class="list-arrow">→</span>
+            </div>
+            <div class="list-item">
+              <div class="list-icon">📚</div>
+              <div class="list-content">
+                <p class="list-title">Practice Questions</p>
+                <p class="list-subtitle">1000+ solved problems</p>
+              </div>
+              <span class="list-arrow">→</span>
+            </div>
+            <div class="list-item">
+              <div class="list-icon">📚</div>
+              <div class="list-content">
+                <p class="list-title">Revision Guides</p>
+                <p class="list-subtitle">Quick summaries for exams</p>
+              </div>
+              <span class="list-arrow">→</span>
+            </div>
+          </div>
+
+          <h2 class="section-title" style="margin-top: 24px;">Popular Topics</h2>
+
+          <div class="quick-actions">
+            <div class="quick-action">
+              <div class="quick-action-icon">🧬</div>
+              <div class="quick-action-text">Biology</div>
+            </div>
+            <div class="quick-action">
+              <div class="quick-action-icon">⚛️</div>
+              <div class="quick-action-text">Chemistry</div>
+            </div>
+            <div class="quick-action">
+              <div class="quick-action-icon">🔢</div>
+              <div class="quick-action-text">Math</div>
+            </div>
+            <div class="quick-action">
+              <div class="quick-action-icon">🌍</div>
+              <div class="quick-action-text">Geography</div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- YOUTUBE PAGE -->
+      <div id="youtube-page" class="page">
+        <section class="section">
+          <div class="card" style="background: linear-gradient(135deg, #ff0000, #cc0000); color: white; border: none;">
+            <h2 class="section-title" style="color: white; margin: 0 0 8px;">Chaptrek NCERT</h2>
+            <p style="margin: 0 0 16px; opacity: 0.95;">
+              Subscribe to our YouTube channel for daily educational videos, chapter explanations, and exam tips.
+            </p>
+            <a
+              href="http://www.youtube.com/@ChaptrekNCERT"
+              target="_blank"
+              rel="noreferrer"
+              class="btn btn-light"
+            >
+              Visit Channel
+            </a>
+          </div>
+
+          <h2 class="section-title" style="margin-top: 20px;">Latest Videos</h2>
+
+          <div class="card">
+            <div class="list-item">
+              <div class="list-icon" style="background: #ffe8e8; color: var(--danger); font-size: 1.4rem;">▶️</div>
+              <div class="list-content">
+                <p class="list-title">Biology Chapter 3 Explained</p>
+                <p class="list-subtitle">12.5K views • 3 days ago</p>
+              </div>
+              <span class="list-arrow">→</span>
+            </div>
+            <div class="list-item">
+              <div class="list-icon" style="background: #ffe8e8; color: var(--danger); font-size: 1.4rem;">▶️</div>
+              <div class="list-content">
+                <p class="list-title">Math Tricks for Competitive Exams</p>
+                <p class="list-subtitle">8.3K views • 1 week ago</p>
+              </div>
+              <span class="list-arrow">→</span>
+            </div>
+            <div class="list-item">
+              <div class="list-icon" style="background: #ffe8e8; color: var(--danger); font-size: 1.4rem;">▶️</div>
+              <div class="list-content">
+                <p class="list-title">Chemistry Reactions Made Simple</p>
+                <p class="list-subtitle">15.8K views • 2 weeks ago</p>
+              </div>
+              <span class="list-arrow">→</span>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- PROFILE PAGE -->
+      <div id="profile-page" class="page">
+        <section class="section">
+          <div class="card" style="text-align: center; padding: 24px 16px;">
+            <div
+              style="width: 80px; height: 80px; border-radius: 20px; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; display: grid; place-items: center; font-size: 2rem; font-weight: 700; margin: 0 auto 16px;"
+            >
+              S
+            </div>
+            <h3 class="mt-0">Sharma Student</h3>
+            <p class="text-muted">sharma.student@example.com</p>
+            <p class="text-muted">Class 10 • Science Stream</p>
+          </div>
+
+          <h2 class="section-title">Account</h2>
+          <div class="card">
+            <div class="list-item">
+              <div class="list-icon">⚙️</div>
+              <div class="list-content">
+                <p class="list-title">Settings</p>
+                <p class="list-subtitle">Notifications, privacy, preferences</p>
+              </div>
+              <span class="list-arrow">→</span>
+            </div>
+            <div class="list-item">
+              <div class="list-icon">🔐</div>
+              <div class="list-content">
+                <p class="list-title">Security</p>
+                <p class="list-subtitle">Password, 2FA, sessions</p>
+              </div>
+              <span class="list-arrow">→</span>
+            </div>
+            <div class="list-item">
+              <div class="list-icon">📞</div>
+              <div class="list-content">
+                <p class="list-title">Support</p>
+                <p class="list-subtitle">Help, feedback, contact us</p>
+              </div>
+              <span class="list-arrow">→</span>
+            </div>
+          </div>
+
+          <button class="btn btn-secondary" style="width: 100%; margin-top: 16px;">
+            Logout
+          </button>
+        </section>
+      </div>
+    </main>
+
+    <!-- BOTTOM NAVIGATION -->
+    <nav class="bottom-nav">
+      <button class="nav-item active" onclick="goToPage('home')">
+        <div class="nav-icon">🏠</div>
+        <div class="nav-label">Home</div>
+      </button>
+      <button class="nav-item" onclick="goToPage('sessions')">
+        <div class="nav-icon">🎥</div>
+        <div class="nav-label">Sessions</div>
+      </button>
+      <button class="nav-item" onclick="goToPage('notes')">
+        <div class="nav-icon">📝</div>
+        <div class="nav-label">Notes</div>
+      </button>
+      <button class="nav-item" onclick="goToPage('resources')">
+        <div class="nav-icon">📚</div>
+        <div class="nav-label">Resources</div>
+      </button>
+      <button class="nav-item" onclick="goToPage('profile')">
+        <div class="nav-icon">👤</div>
+        <div class="nav-label">Profile</div>
+      </button>
+    </nav>
+
+    <!-- OVERLAYS / MODALS -->
+    <div class="overlay" id="modal-overlay" onclick="closeModal()"></div>
+
+    <div class="modal" id="session-modal">
+      <div class="modal-header">
+        <h2 class="modal-title" id="session-modal-title">Session Details</h2>
+        <button class="close-btn" onclick="closeModal()">✕</button>
+      </div>
+      <p class="text-muted">Loading session details...</p>
+    </div>
+  </div>
+
+  <script>
+    const pages = [
+      "home",
+      "sessions",
+      "notes",
+      "resources",
+      "youtube",
+      "profile",
+    ];
+
+    function goToPage(pageName) {
+      // Hide all pages
+      pages.forEach((page) => {
+        const pageElement = document.getElementById(`${page}-page`);
+        if (pageElement) pageElement.classList.remove("active");
+      });
+
+      // Show selected page
+      const selectedPage = document.getElementById(`${pageName}-page`);
+      if (selectedPage) selectedPage.classList.add("active");
+
+      // Update nav items
+      document.querySelectorAll(".nav-item").forEach((item) => {
+        item.classList.remove("active");
+      });
+      event.target.closest(".nav-item").classList.add("active");
+
+      // Scroll to top
+      document.querySelector(".main").scrollTop = 0;
+    }
+
+    function joinSession(sessionName) {
+      alert(`Joining ${sessionName} session...`);
+    }
+
+    function startChat() {
+      goToPage("messages");
+      alert("Chat feature coming soon!");
+    }
+
+    function toggleNotifications() {
+      alert("No new notifications");
+    }
+
+    function toggleProfile() {
+      goToPage("profile");
+    }
+
+    function filterSessions(query) {
+      console.log("Filtering by:", query);
+    }
+
+    function filterByStatus(status) {
+      console.log("Filtering by status:", status);
+
+      document.querySelectorAll(".tabs .tab").forEach((tab) => {
+        tab.classList.remove("active");
+      });
+      event.target.classList.add("active");
+    }
+
+    function closeModal() {
+      document.getElementById("modal-overlay").classList.remove("active");
+    }
+
+    function openSessionModal(sessionName) {
+      document.getElementById("session-modal-title").textContent = sessionName;
+      document.getElementById("modal-overlay").classList.add("active");
+    }
+
+    // Initialize
+    document.addEventListener("DOMContentLoaded", () => {
+      console.log("Chaptrek NCERT Mobile App Ready");
+    });
+  </script>
+</body>
+</html>
