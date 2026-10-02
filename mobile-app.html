@@ -84,20 +84,16 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-weight: 700;
-      font-size: 1.1rem;
+      justify-content: flex-start;
+      min-width: 0;
     }
 
-    .brand-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.2);
-      display: grid;
-      place-items: center;
-      font-size: 0.9rem;
-      font-weight: 700;
+    .brand-logo {
+      display: block;
+      width: 180px;
+      max-width: 46vw;
+      height: auto;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.12));
     }
 
     .header-icons {
@@ -794,8 +790,7 @@
     <!-- HEADER -->
     <header class="header">
       <div class="brand">
-        <div class="brand-icon">C</div>
-        <span>Chaptrek</span>
+        <img class="brand-logo" src="assets/chaptrek-logo.svg" alt="Chaptrek NCERT Logo" />
       </div>
       <div class="header-icons">
         <button class="icon-btn" onclick="toggleNotifications()">🔔</button>
