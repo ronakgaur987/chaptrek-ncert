@@ -1,0 +1,30 @@
+<svg width="1200" height="400" viewBox="0 0 1200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="400" fill="#0B1F4A"/>
+
+  <g transform="translate(60,46)">
+    <path d="M110 260L252 180L390 260L252 336L110 260Z" fill="#0A4FB3"/>
+    <path d="M252 336V180" stroke="#0A4FB3" stroke-width="8"/>
+    <path d="M112 260L252 180L390 260" stroke="#1C8AE8" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <path d="M129 232C129 189.026 163.026 155 206 155H294C336.974 155 371 189.026 371 232V260H129V232Z" fill="#1E6BE8"/>
+    <path d="M194 152H308L252 78L194 152Z" fill="#2C7EF2"/>
+    <path d="M197 150H307L252 94L197 150Z" fill="#EAF3FF"/>
+    <path d="M208 146H296L252 107L208 146Z" fill="#2E8AF9" opacity="0.85"/>
+    <path d="M150 164L252 112L353 164" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <path d="M212 211C212 181.176 236.176 157 266 157H280C309.824 157 334 181.176 334 211V240H212V211Z" fill="#F9C68B"/>
+    <path d="M205 210C205 173.549 234.549 144 271 144H279C315.451 144 345 173.549 345 210V236H205V210Z" fill="#F8D6A2"/>
+
+    <circle cx="241" cy="216" r="8" fill="#1A2A44"/>
+    <circle cx="300" cy="216" r="8" fill="#1A2A44"/>
+    <path d="M245 255C254 272 267 280 285 280C304 280 316 272 325 255" stroke="#1A2A44" stroke-width="8" stroke-linecap="round"/>
+
+    <path d="M180 188C176 169 191 152 211 152H294C315 152 330 169 326 188L320 214C315 235 296 249 274 249H231C208 249 189 235 184 214L180 188Z" fill="#8ED9FF" opacity="0.2"/>
+  </g>
+
+  <g transform="translate(430,82)">
+    <text x="0" y="120" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="72" letter-spacing="2">CHAPTREK NCERT</text>
+    <text x="2" y="188" fill="#D7E6FF" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="27" letter-spacing="3">THINK FURTHER, GO FARTHER</text>
+    <line x1="0" y1="212" x2="540" y2="212" stroke="#1E6BE8" stroke-width="6"/>
+  </g>
+</svg>
